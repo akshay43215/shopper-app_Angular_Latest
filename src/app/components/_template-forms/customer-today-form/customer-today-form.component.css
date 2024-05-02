@@ -1,0 +1,35 @@
+
+/* - - - - - RATINGS */
+.rating {
+
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 2rem;
+  gap: 12px;
+}
+.rating:not(:checked) > input {
+  display: none;
+}
+
+#rate:not(:checked) > label {
+  cursor:pointer;
+  color: rgba(155, 173, 168, 0.4);
+  line-height: 33px;
+  text-align: center;
+}
+#rate:not(:checked) > label:hover,
+#rate:not(:checked) > label:hover ~ label {
+  color: rgb(130, 219, 170);
+  /* font-size: 2rem; */
+}
+#rate > input:checked + label:hover,
+#rate > input:checked + label:hover ~ label,
+#rate > input:checked ~ label:hover,
+#rate > input:checked ~ label:hover ~ label,
+#rate > label:hover ~ input:checked ~ label {
+  color: rgba(152, 199, 170, 0.8);
+}
+#rate > input:checked ~ label {
+  color: rgb(53, 234, 16);
+  /* font-size: 2rem; */
+}

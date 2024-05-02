@@ -1,0 +1,31 @@
+<div class="body">
+    <div class="row overlay">
+        <div class="col-md-12 align-center module-name">
+            <div class="col-md-12">
+                <h4>CRC AND CRO</h4>
+                <h6 class="login">LOGIN TO CONTINUE</h6>
+            </div>
+            <div class="col-md-12 user-txt">
+                <div class="input-group">
+                    <span class="input-group-text bi bi-person-circle"></span>
+                    <input type="text" class="form-control" placeholder="Enter your employee code" [(ngModel)]="empcode"
+                        autocomplete="off" maxlength="6" (keypress)="numberOnly($event)" />
+
+                </div>
+            </div>
+            <div class="col-md-12 pwd-txt">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Enter your password" [type]="hide ? 'text' : 'password'"
+                        [(ngModel)]="password" autocomplete="off" />
+                    <span class="input-group-text bi bi-eye-fill" (click)="show()"></span>
+                </div>
+            </div>
+            <div class="col-md-12 log-btn">
+                <button type="button" class="btn btn-dark" (click)="employeeLogin()" >{{btntxt ? 'Log In':'Loading..'}}&nbsp;<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="!btntxt" ></span></button>
+            </div>
+        </div>
+        <div class="copywrite">
+            <p>Copyright © 2024 - MAFIL . All rights reserved. Designed by MAFIL IT</p>
+        </div>
+    </div>
+</div>

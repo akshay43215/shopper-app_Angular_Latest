@@ -1,0 +1,178 @@
+<form class="px-5 py-3" [formGroup]="callRedemptionForm" >
+
+  <!-- Call Response -->
+  <div class="mb-3 ">
+    <label for="callRespId" class="form-label">Call Response :</label>
+    <select name="" id="callRespId" formControlName="callRespFC" class="form-control form-input ">
+      <option [ngValue]="null" disabled>Choose the Call Response..</option>
+      <option *ngFor="let itm of callResponseList" [value]="itm.resid">
+        {{itm.resname}}
+      </option>
+      <option [value]="9">Call Back</option>
+    </select>
+    <p id="callRespAlert" *ngIf="callRedemptionForm.dirty && f['callRespFC'].errors" class="form-text text-danger">** call response is mandatory..</p>
+  </div>
+
+  <!-- call answered 🟨  -->
+  <div class=" row mb-3 d-flex align-items-center" *ngIf="showAnswerDrops">
+    <div class="col">
+       <!-- followUp status  🕒-->
+      <label for="leadReasonId" class="form-label">The Release reason :</label>
+      <select name="" id="leadReasonId" formControlName="leadReasonFC" class="form-control form-input ">
+        <option [ngValue]="null" disabled>Choose the Call Response..</option>
+        <option *ngFor="let itm of releaseRespList" [ngValue]="itm.releaseid" >
+          {{itm.releasename}}
+        </option>
+      </select>
+      <p id="leadReasonIdAlert" *ngIf="callRedemptionForm.dirty && f['leadReasonFC'].errors" class="form-text text-danger">** call response is mandatory..</p>
+    </div>
+
+    <!-- lead Rating -->
+    <div class="col">
+      <label for="leadRatingId" class="form-label">lead Rating :</label>
+      <select name="" id="leadRatingId" formControlName="leadRatingFC" class="form-control form-input ">
+        <option [ngValue]="null" disabled>Choose Rating ..</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="9" >09</option>
+        <option [ngValue]="8" >08</option>
+        <option [ngValue]="7" >07</option>
+        <option [ngValue]="6" >06</option>
+        <option [ngValue]="5" >05</option>
+        <option [ngValue]="4" >04</option>
+        <option [ngValue]="3" >03</option>
+        <option [ngValue]="2" >02</option>
+        <option [ngValue]="1" >01</option>
+      </select>
+      <p id="leadRatingpAlert" *ngIf="callRedemptionForm.dirty && f['leadRatingFC'].errors" class="form-text text-danger">** lead rating is mandatory..</p>
+
+    </div>
+     <!-- Transaction Time -->
+     <div class="col">
+      <label for="transactTimeId" class="form-label">Transaction Time :</label>
+      <select name="" id="transactTimeId" formControlName="transactTimeFC" class="form-control form-input ">
+        <option [ngValue]="null" disabled>Choose Time Range ..</option>
+        <option [ngValue]="0">N/A</option>
+        <option [ngValue]="1">0 to 30 Minutes</option>
+        <option [ngValue]="2">30 Minutes to 1 Hr</option>
+        <option [ngValue]="3">1 Hr to 2 Hr</option>
+        <option [ngValue]="4">2 Hr to 3 Hr</option>
+        <option [ngValue]="4"> 3 Hr to 4 Hr</option>
+        <option [ngValue]="4"> 4 Hr and Above </option>
+      </select>
+      <p id="transactTimeIdAlert" *ngIf="callRedemptionForm.dirty && f['transactTimeFC'].errors" class="form-text text-danger">**Transaction Time is mandatory..</p>
+    </div>
+    <div class="row my-3">
+      <div class="col d-flex flex-row">
+        <!-- Radio come-back -->
+        <label for="leadComeBackId" class="form-label">Wheather lead user Willing to Comeback :</label>
+        <p id="leadComeBackIdAlert" *ngIf="callRedemptionForm.dirty && f['leadComeBackFC'].errors" class="form-text text-danger">** Choose One..</p>
+        <div class="form-check" id="leadComeBackId">
+          <input class="form-check-input ml-2" type="radio" name="" formControlName="leadComeBackFC"  value= "1" >
+          <label class="form-check-label" for="Radios1"> Yes </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input ml-2" type="radio" formControlName="leadComeBackFC" name="" value= "0" >
+          <label class="form-check-label" for="Radios2"> No </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- willing come-back 🟥  -->
+  <div class=" row mb-3 d-flex align-items-center" *ngIf="showComeBackrDrops">
+    <!-- Pledge Weight -->
+    <div class="col">
+      <label for="leadPledgeWtId" class="form-label">Pledge Weight :</label>
+      <input id="leadPledgeWtId" class="form-control form-input" type="text" autocomplete="off" formControlName="leadPledgeWtFC" placeholder="Enter pledge weight..!">
+      <p id="leadPledgeWtIdAlert" *ngIf="callRedemptionForm.dirty && f['leadPledgeWtFC'].errors" class="form-text text-danger">**Pledge Weight is mandatory..</p>
+    </div>
+    <!-- Pledge Amount -->
+    <div class="col">
+      <label for="leadPledgeAmntId" class="form-label">Pledge Amount :</label>
+      <input id="leadPledgeAmntId" class="form-control form-input" type="number" autocomplete="off" formControlName="leadPledgeAmntFC" placeholder="Enter pledge Amount..!">
+      <p id="leadPledgeAmntIdAlert" *ngIf="callRedemptionForm.dirty && f['leadPledgeAmntFC'].errors" class="form-text text-danger">**Pledge Amount is mandatory..</p>
+    </div>
+  </div>
+  <!-- call answered 🟨  -->
+  <div class=" row mb-3 d-flex align-items-center" *ngIf="showAnswerDrops">
+    <!--User Remarks -->
+    <div class="col">
+      <label for="leadRemarkId" class="form-label">Release Remarks :</label>
+      <input id="leadRemarkId" class="form-control form-input" type="text" autocomplete="off" formControlName="leadRemarkFC" placeholder="Enter remarks if any..!">
+      <p id="leadRemarkIdAlert" *ngIf="callRedemptionForm.dirty && f['leadRemarkFC'].errors" class="form-text text-danger">**Release Remarks is mandatory..</p>
+    </div>
+    <!--Branch Remarks -->
+    <div class="col">
+      <label for="BrRemarkId" class="form-label">Branch Remarks :</label>
+      <input id="BrRemarkId" class="form-control form-input" type="text" autocomplete="off" formControlName="BranchRemarkFC" placeholder="Enter remarks if any..!">
+    </div>
+  </div>
+
+  <div class="row mb-3" *ngIf="showCallBackDt">
+    <div class="col">
+      <label for="followupDateId" class="form-label">Redemption call back date :</label>
+      <input id="followupDateId" class="form-control form-input" type="date" [min]="startDate | date:'yyyy-MM-dd'" formControlName="followupDateFC" value= "startDate|date:'yyyy-MM-dd'  " autocomplete="off" placeholder="Next followUp Date..!">
+      <p id="followupDateIdpAlert" *ngIf="callRedemptionForm.dirty && f['followupDateFC'].errors" class="form-text text-danger">** Choose One..</p>
+    </div>
+    <div class="col">
+      <label for="followupHourID" class="form-label"> Followup Time(Hour) :</label>
+      <select name="" id="followupHourId" formControlName="followupHourFC" class="form-control form-input ">
+        <option [ngValue]="null" disabled>Choose Time ..</option>
+        <option [ngValue]="8">08</option>
+        <option [ngValue]="9">09</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="11">11</option>
+        <option [ngValue]="12">12</option>
+        <option [ngValue]="13">13</option>
+        <option [ngValue]="14">14</option>
+        <option [ngValue]="15">15</option>
+        <option [ngValue]="16">16</option>
+        <option [ngValue]="17">17</option>
+        <option [ngValue]="18">18</option>
+        <option [ngValue]="19">19</option>
+      </select>
+      <p id="followupHourIdAlert" *ngIf="callRedemptionForm.dirty && f['followupHourFC'].errors" class="form-text text-danger">** Choose Specific rime option..</p>
+    </div>
+  </div>
+  <div class="mb-3 form-check" *ngIf="showAnswerDrops || showCallBackDt" >
+    <input type="checkbox" id="clearCheckId" formControlName="clearCheckFC" checked="f['clearCheckFC'].value" class="form-check-input">
+    <label class="form-check-label" for="clearCheckId">Have I been clear to you? , Assist you with anything further?</label>
+    <p id="custEmpTypeAlert"  *ngIf="callRedemptionForm.dirty && f['clearCheckFC'].errors" class="form-text text-danger">**Accept the terms and conditions ..</p>
+  </div>
+  <div class="mb-3 d-flex align-items-center" *ngIf="showAnswerDrops || showCallBackDt">
+      <label class="form-rating" for="rating">Star rating</label>
+      <!-- STAR RATING -->
+      <section id="rate" class="rating"  (change)="handleCheckStar($event)">
+        <input type="radio" id="star_5" name="rate" value="5" />
+        <label for="star_5" title="Five">&#9733;</label>
+        <!-- FOURTH STAR -->
+        <input type="radio" id="star_4" name="rate" value="4" />
+        <label for="star_4" title="Four">&#9733;</label>
+        <!-- THIRD STAR -->
+        <input type="radio" id="star_3" name="rate" value="3" />
+        <label for="star_3" title="Three">&#9733;</label>
+        <!-- SECOND STAR -->
+        <input type="radio" id="star_2" name="rate" value="2" />
+        <label for="star_2" title="Two">&#9733;</label>
+        <!-- FIRST STAR -->
+        <input type="radio" id="star_1" name="rate" value="1" />
+        <label for="star_1" title="One">&#9733;</label>
+      </section>
+      <p id="startRatingAlert"  *ngIf="callRedemptionForm.dirty && !starValid" class="form-text text-danger px-2">**Star rating is mandatory</p>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button (click)="closeModal()" class="btn btn-outline-dark mx-2">CLose</button>
+    <button type="button" (click)="handleSubmit()" class="btn btn-dark ms-3" [disabled]="!callRedemptionForm.valid || !starValid" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit after complete the form">Submit</button>
+  </div>
+
+
+</form>
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+        "target": "https://uatapp.manappuram.net/mafilcrc/api",
+        "secure": false,
+        "changeOrigin":true,
+        "pathRewrite":{"^/api":""}
+    }
+}

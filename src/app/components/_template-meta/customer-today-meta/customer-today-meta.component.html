@@ -1,0 +1,55 @@
+<div class="d-flex flex-row justify-content-between">
+  <!-- ------------------->today
+<div class="card-body col-md-6 col-xl-3">
+  <span>
+    <h5 class="card-title">Lead Source</h5>
+    <p>-{{nowLeadProp.leadType}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">Language</h5>
+    <p>-{{nowLeadProp.lang}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">State</h5>
+    <p>-{{nowLeadProp.state}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">Lead Type</h5>
+    <p>-{{nowLeadProp.leadType}}-</p>
+  </span>
+</div>
+<!-- ------------------->
+<div class="card-body col-md-6 col-xl-3">
+  <span>-
+    <h5 class="card-title">Product Interested</h5>
+    <p>-{{nowLeadProp.product}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">Branch Id</h5>
+    <p>-{{nowLeadProp.branchId}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">Lead Date</h5>
+    <p>01-04-2024 </p>
+  </span>
+  <span>
+    <h5 class="card-title">Amount </h5>
+    <p>{{nowLeadProp.relamt |  currency:'INR'}}</p>
+  </span>
+</div>
+ <!-- ------------------->
+<div class="card-body col-md-6 col-xl-3">
+  <span>
+    <h5 class="card-title">Lead Sub_Source</h5>
+    <p>-{{nowLeadProp.subLeadName}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">Branch</h5>
+    <p>-{{nowLeadProp.branch}}-</p>
+  </span>
+  <span>
+    <h5 class="card-title">Customer Type</h5>
+    <p>-{{nowLeadProp.customerType}}-</p>
+  </span>
+</div>
+</div>

@@ -1,0 +1,36 @@
+
+<!-- *ngIf="(apiService.apiData$ |async)" -->
+<div class="card-header m-2 border-0 rounded row" *ngIf="this.nowLead">
+  <div class="col-8">
+    <div class="d-flex flex-wrap" style="gap: 20px">
+      <i class="bi bi-person-circle text-secondary" style="font-size: 40px"></i>
+      <div class="">
+        <h3 class="small">- {{nowLead!.name }}-</h3>
+        <p>Description details will be shown here...</p>
+      </div>
+    </div>
+  </div>
+  <div class=" col-4 d-flex flex-wrap align-items-center justify-content-end" style="gap: 20px" *ngIf="this.nowLead">
+    <p class="m-0"> - {{nowLead!.mobNo}}-</p>
+    <button type="button" (click)="openModal()" class="btn btn-dark btn-lg">Call Now</button>
+  </div>
+  <div>
+  </div>
+
+</div>
+
+<!-- call submit form -->
+<div class="container bg-light" id="callForm" *ngIf="showMyComponent">
+  <div class="border border-2 rounded">
+    <h3 class="text-center my-3">{{formTypeOf}} Form</h3>
+    <!-- --the form lists one at a time -->
+    <app-customer-today-form *ngIf="showTodayForm" (onFormChange)="onFormChangeEventParent($event)" (closeForm)="closeFormParent()" ></app-customer-today-form>
+    <app-customer-redemption-form *ngIf="showRedemptionForm" (onFormChange)="onFormChangeEventParent($event)" (closeForm)="closeFormParent()"></app-customer-redemption-form>
+    <app-customer-nca-form *ngIf="showNCAForm" (onFormChange)="onFormChangeEventParent($event)" (closeForm)="closeFormParent()" ></app-customer-nca-form>
+  </div>
+</div>
+
+<!-- double check popup -->
+<div class="modal-container">
+  <div #modal></div>
+</div>

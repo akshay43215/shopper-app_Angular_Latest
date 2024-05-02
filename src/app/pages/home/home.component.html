@@ -1,0 +1,21 @@
+<div class="wrapper ">
+  <!-- Sidebar  -->
+  <app-sidebar [showSidebar]="showSidebar"></app-sidebar>
+
+  <!-- Page Content  -->
+  <div id="content">
+    <!-- navigation bar -->
+    <app-navbar [(showSidebar)]="showSidebar"></app-navbar>
+    <!-- Loader -->
+    <div *ngIf="this.isLoading" class="container">
+      <div class="dots m-auto"></div>
+    </div>
+    <!-- <app-show-lead></app-show-lead> -->
+    <router-outlet></router-outlet>
+    <!-- <div class=" py-2 bg-light d-flex justify-content-center"> -->
+      <!-- <div class="col"> -->
+        <!-- <label class="small">Designed & Developed By <span class="fw-bold">Sales Team AMS</span></label> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>

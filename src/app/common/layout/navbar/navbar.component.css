@@ -1,0 +1,15 @@
+
+
+.navbar {
+  padding: 15px 10px;
+  background: var(--app-common-bg);
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(182, 173, 173, 0.1);
+}
+/* .navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+} */

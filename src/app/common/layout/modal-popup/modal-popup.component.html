@@ -1,0 +1,19 @@
+
+
+<div class="card rounded border shadow" id="popup-card">
+  <div class="card-header ">
+    <div class="row justify-content-centre">
+      <h3 class="col align-self-center small">{{ title }}</h3>
+      <button type="button" (click)="closeMe()" class=" col-1 mx-2 btn btn-sm btn-outline-secondary rounded">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="small">{{ body }}</p>
+    <div class="row justify-content-end">
+      <button type="button" class=" col-3 btn btn-sm btn-outline-secondary" (click)="closeMe()">No</button>
+      <button type="button" class=" col-3 btn btn-sm btn-secondary mx-1" (click)="confirm()">Yes</button>
+    </div>
+  </div>
+</div>

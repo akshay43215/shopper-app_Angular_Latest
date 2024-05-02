@@ -1,0 +1,54 @@
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:url("../../../assets/loginpage.jpg");
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+  }
+  .overlay
+  {
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    text-align: center;
+    height: 400px;
+    width: 350px;
+    border-radius: 20px;
+  }
+  .copywrite
+  {
+    font-size: 8px;
+    padding-top: 50px;
+  }
+  .module-name
+  {
+    font-family: fantasy;
+    margin-top: 10%;
+  }
+  .login
+  {
+    color: gray;
+    font-family: system-ui;
+  }
+  .user-txt
+  {
+    margin-top: 20%;
+    font-family: none;
+  }
+  .pwd-txt
+  {
+    margin-top: 10%;
+    font-family: none;
+  }
+  .log-btn
+  {
+    margin-top: 10%;
+    font-family: system-ui;
+  }
+
+

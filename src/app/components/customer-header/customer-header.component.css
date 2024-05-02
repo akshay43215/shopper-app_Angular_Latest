@@ -1,0 +1,36 @@
+
+
+/* callForm */
+
+#callForm {
+  position: fixed;
+  top: 50%;
+  left: 51%;
+  transform: translate(-50%, -51%);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  z-index: 99;
+  /* background-color: ; */
+  height:max-content;
+}
+
+#callForm> div {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.form-input {
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: none;
+  height: 3rem;
+}
+
+.form-input:focus {
+  border: 1px solid rgb(141, 173, 187);
+}
+
+
+
+
+

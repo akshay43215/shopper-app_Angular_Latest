@@ -1,0 +1,44 @@
+<!-- navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body-tertiary rounded">
+  <div class="container-fluid">
+    <div class="col">
+      <button type="button" id="sidebarCollapse" class="btn btn-outline-dark border border-secondary-subtle btn-lg"
+        (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+
+
+    <div class="col d-flex justify-content-center align-items-center">
+      <i class="bi bi-alarm mx-3 text-dark" style="font-size: 30px"></i>
+      <h2 class="!important text-secondary">
+        {{ rxTime | date : "hh:mm:ss a" }}
+      </h2>
+      <button type="button" (click)="handleBreakTime()" class="btn btn-dark mx-3">Take Break</button>
+    </div>
+
+    <div class="col">
+      <div class="collapse navbar-collapse d-flex justify-content-end align-items-center" id="navbarSupportedContent">
+        <ul class="nav navbar-nav d-flex justify-content-end align-items-center justify-content-center">
+          <button (click)="handleLogout()" type="button" class="btn btn-light" >
+            <li class="nav-item d-flex justify-content-around shadow px-3 py-1 bg-white rounded">
+              <i class="bi bi-person-square m-0 text-secondary" style="font-size: 30px"></i>
+              <p class="m-0 align-self-center px-3">{{this.liveUser}}</p>
+            </li>
+            <!-- <li class="nav-item">
+                <i class="bi bi-box-arrow-right m-3" style="font-size: 30px"></i>
+            </li> -->
+          </button>
+          </ul>
+          <!-- double check popup -->
+          <div class="modal-container">
+            <div #modal></div>
+          </div>
+      </div>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-view-list"></i>
+            </button> -->
+          </div>
+        </div>
+</nav>
+

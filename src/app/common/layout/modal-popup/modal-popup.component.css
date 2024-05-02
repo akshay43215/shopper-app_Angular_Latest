@@ -1,0 +1,39 @@
+#popup-card{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%,-50%);
+  /* width: 100%; */
+  width: 26rem;
+
+}
+
+
+/* .dialog { */
+  /* background-color: rgba(32, 82, 221, 0.5); */
+  /* color: white; */
+  /* border-color: transparent; */
+  /* overflow: hidden; */
+  /* border-radius: 5px; */
+  /* cursor: pointer; */
+  /* box-shadow: 0 0 20px 8px #d0d0d0; */
+  /* height: 300px; */
+  /* width: 600px; */
+  /* background: rgba( 47, 67, 73, 0.6 ); */
+  /* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
+  /* backdrop-filter: blur( 9.5px ); */
+  /* -webkit-backdrop-filter: blur( 9.5px ); */
+  /* border-radius: 10px; */
+  /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+/* } */
+
+/* modal { */
+  /* modals are hidden by default */
+  /* display: none; */
+/* } */
+
+/* body.modal-open { */
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  /* overflow: hidden; */
+/* } */

@@ -1,0 +1,26 @@
+<div class="container" *ngIf="this.nowLead">
+  <div class="container">
+    <h2 class="mb-3">{{nowLead!.leadType | titlecase}} Calling</h2>
+    <button type="button" class="btn btn-outline-dark mx-1" disabled>
+      - {{nowLead!.leadType}} -
+    </button>
+    <div class="line"></div>
+  </div>
+  <!-- Loader -->
+  <!-- <div class="container py-2">
+    <div class="dots m-auto"></div>
+  </div>  -->
+
+  <!-- <app-customer-dtl></app-customer-dtl> -->
+  <app-customer-dtl></app-customer-dtl>
+  <div class="container">
+    <div class="line"></div>
+      <app-customer-pledges></app-customer-pledges>
+    <div class="line"></div>
+    <div class=" py-2 bg-light d-flex justify-content-center">
+      <!-- <div class="col"> -->
+        <label class="small">Designed & Developed By <span class="fw-bold">IT Team [MAFIL]</span></label>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

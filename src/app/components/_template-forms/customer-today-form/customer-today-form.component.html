@@ -1,0 +1,184 @@
+<form class="px-5 py-3" [formGroup]="callTodayForm">
+
+  <!-- Call Response -->
+  <div class="row mb-3 ">
+    <div class="col">
+      <label for="callRespId" class="form-label">Call Response :</label>
+      <select name="" id="callRespId" formControlName="callRespFC"  class="form-control form-input">
+        <option [ngValue]="null" disabled>Choose the Call Response.. </option>
+        <option *ngFor="let itm of callResponseList" [value]="itm.resid.toString()">
+          {{itm.resname}}
+        </option>
+      </select>
+      <p id="callRespAlert" *ngIf="callTodayForm.dirty && f['callRespFC'].errors" class="form-text text-danger">** call
+        response is mandatory..</p>
+    </div>
+    <div class="col" *ngIf="showAnswerDrops">
+      <label for="folowUpStatus" class="form-label">The followUp status :</label>
+      <select id="folowUpStatusId" formControlName="folowUpStatusFC" class="form-control form-input" name="">
+        <option [ngValue]="null" disabled>Choose the followUp status..</option>
+        <option *ngFor="let itm of followupstatusList " [value]="itm.followupid.toString()">
+          {{itm.followupReason}}
+        </option>
+      </select>
+      <p id="folowUpStatusAlert" *ngIf="callTodayForm.dirty && f['folowUpStatusFC'].errors"
+        class="form-text text-danger">** followUp status is mandatory.</p>
+    </div>
+
+  </div>
+
+  <!-- call answered 🟨  -->
+  <!-- <div class=" row mb-3 d-flex align-items-center" *ngIf="showAnswerDrops">
+    <div class="col">
+       followUp status  🕒
+      <label for="folowUpStatus" class="form-label">The followUp status :</label>
+      <select id="folowUpStatusId" formControlName="folowUpStatusFC" class="form-control form-input" name="">
+        <option [ngValue]="null" disabled>Choose the followUp status..</option>
+        <option *ngFor="let itm of followupstatusList " [value]="itm.followupid">
+          {{itm.followupReason}}
+        </option>
+      </select>
+      <p id="folowUpStatusAlert" *ngIf="callTodayForm.dirty && f['folowUpStatusFC'].errors"
+        class="form-text text-danger">** followUp status is mandatory.</p>
+    </div>
+  </div> -->
+
+  <!-- custumer interested 🟨 -->
+  <div class="row mb-3 d-flex align-items-center" *ngIf="showInterestDrops">
+    <div class="row mb-3">
+      <!-- Product interested -->
+      <div class="col">
+        <label for="productInterestId" class="form-label">The product interested :</label>
+        <select name="" id="productInterestId" formControlName="productInterestFC" class="form-control form-input">
+          <option [ngValue]="null" disabled>Choose the interested product..</option>
+          <option [ngValue]="1" *ngFor="let itm of productList " [value]="itm.prdid.toString()">
+            {{itm.product}}
+          </option>
+        </select>
+        <p id="productInterestAlert"
+          *ngIf="callTodayForm.dirty && f['productInterestFC'].errors && f['productInterestFC'].errors['required']"
+          class="form-text text-danger">**product interested is mandatory..</p>
+      </div>
+      <!-- custumer Employment profile -->
+      <div class="col">
+        <label for="leadoccupation" class="form-label">Employment profile of the custumer :</label>
+        <select name="" id="leadoccupationId" formControlName="leadOccupationFC" class="form-control form-input">
+          <option [ngValue]="null" disabled>Choose an option ..</option>
+          <option [ngValue]="1" *ngFor="let itm of pesldtlList" [value]="itm.pdi.toString()">
+            {{itm.pdtl}}
+          </option>
+        </select>
+        <p id="leadoccupationAlert" *ngIf="callTodayForm.dirty && f['leadOccupationFC'].errors"
+          class="form-text text-danger">** Employment profile is mandatory ..</p>
+      </div>
+    </div>
+    <div class="col">
+      <label for="leadEmail" class="form-label">lead mail :</label>
+      <input id="leadEmailId" class="form-control form-input" type="email" formControlName="leadEmailFC"
+        autocomplete="off" placeholder="lead mail id..!">
+      <p id="leadEmailIdAlert" *ngIf="callTodayForm.dirty && f['leadEmailFC'].touched && f['leadEmailFC'].errors"
+        class="form-text text-danger">** invalid mail address ..</p>
+    </div>
+    <div class="col">
+      <label for="leadNewPhone" class="form-label">New lead Number [If Any] :</label>
+      <input id="leadNewPhoneId" class="form-control form-input" type="text" formControlName="leadNewPhoneFC"
+        (keypress)="numberOnly($event)" maxlength="10" autocomplete="off" placeholder="lead mobile ..!">
+      <p id="leadNewPhoneIdAlert"
+        *ngIf="callTodayForm.dirty && f['leadNewPhoneFC'].touched && f['leadNewPhoneFC'].errors"
+        class="form-text text-danger">** invalid Phone number ..</p>
+    </div>
+    <div class="col">
+      <label for="leadBranchId" class="form-label">Branch :</label>
+      <select name="" id="leadBranchId" formControlName="leadBranchFC" class="form-control form-input">
+        <option [ngValue]="null" disabled>Choose an option ..</option>
+        <option *ngFor="let itm of branchdtl " [ngValue]="itm.brid.toString()">
+          {{itm.brname}}-{{itm.brid}}
+        </option>
+      </select>
+      <p id="leadBranchIdAlert" *ngIf="callTodayForm.dirty && f['leadBranchFC'].errors" class="form-text text-danger">**
+        invalid Branch ID ..</p>
+    </div>
+    <!-- </div> -->
+  </div>
+  <div class="row mb-3" *ngIf="showCallBackDt">
+    <div class="col">
+      <label for="followupDateId" class="form-label">Redemption call back date :</label>
+      <input id="followupDateId" class="form-control form-input" type="date" [min]="startDate | date:'yyyy-MM-dd'"
+        formControlName="followupDateFC" autocomplete="off" value= "startDate|date:'yyyy-MM-dd'"
+        placeholder="Next followUp Date..!">
+      <p id="followupDateIdpAlert" *ngIf="callTodayForm.dirty && f['followupDateFC'].errors"
+        class="form-text text-danger">** Choose One..</p>
+    </div>
+    <div class="col">
+      <label for="followupHourID" class="form-label"> Followup Time(Hour) :</label>
+      <select name="" id="followupHourId" formControlName="followupHourFC" class="form-control form-input">
+        <option [ngValue]="null" disabled>Choose Time ..</option>
+        <option [ngValue]="8">08</option>
+        <option [ngValue]="9">09</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="11">11</option>
+        <option [ngValue]="12">12</option>
+        <option [ngValue]="13">13</option>
+        <option [ngValue]="14">14</option>
+        <option [ngValue]="15">15</option>
+        <option [ngValue]="16">16</option>
+        <option [ngValue]="17">17</option>
+        <option [ngValue]="18">18</option>
+        <option [ngValue]="19">19</option>
+      </select>
+      <p id="followupHourIdAlert" *ngIf="callTodayForm.dirty && f['followupHourFC'].errors"
+        class="form-text text-danger">** Choose Specific rime option..</p>
+    </div>
+  </div>
+  <!-- Checkboxes -->
+  <div class="mb-3 form-check " *ngIf="showAnswerDrops">
+    <div class="mb-3">
+      <label for="leadRemark" class="form-label">Remarks :</label>
+      <input id="leadRemarkId" class="form-control form-input" type="text" autocomplete="off"
+        formControlName="leadRemarkFC" placeholder="Enter remarks if any..!">
+      <p id="remarkAlert" *ngIf="callTodayForm.dirty && f['leadRemarkFC'].errors" class="form-text text-danger">**remark
+        field is mandatory ..</p>
+    </div>
+    <input type="checkbox" id="clearCheckId" formControlName="clearCheckFC" checked="f['clearCheckFC'].value"
+      class="form-check-input">
+    <label class="form-check-label" for="clearCheckId">Have I been clear to you? , Assist you with anything
+      further?</label>
+    <p id="checkBoxAlert" *ngIf="callTodayForm.dirty && f['clearCheckFC'].errors" class="form-text text-danger">**Accept
+      the terms and conditions ..</p>
+  </div>
+
+
+  <div class="mb-3 d-flex align-items-center" *ngIf="showAnswerDrops">
+    <label class="form-rating" for="rating">Star rating</label>
+    <!-- STAR RATING -->
+    <section id="rate" class="rating" (change)="handleCheckStar($event)">
+      <!-- <option [ngValue]="f['starRatingFC'].value"></option> -->
+      <!-- FIFTH STAR -->
+      <input type="radio" id="star_5" name="rate" value="5" />
+      <label for="star_5" title="Five">&#9733;</label>
+      <!-- FOURTH STAR -->
+      <input type="radio" id="star_4" name="rate" value="4" />
+      <label for="star_4" title="Four">&#9733;</label>
+      <!-- THIRD STAR -->
+      <input type="radio" id="star_3" name="rate" value="3" />
+      <label for="star_3" title="Three">&#9733;</label>
+      <!-- SECOND STAR -->
+      <input type="radio" id="star_2" name="rate" value="2" />
+      <label for="star_2" title="Two">&#9733;</label>
+      <!-- FIRST STAR -->
+      <input type="radio" id="star_1" name="rate" value="1" />
+      <label for="star_1" title="One">&#9733;</label>
+    </section>
+    <p id="startRatingAlert" *ngIf="callTodayForm.dirty && !starValid" class="form-text text-danger px-2">**Star rating
+      is mandatory</p>
+  </div>
+
+  <!-- Button pt -->
+  <div class="d-flex justify-content-end">
+    <button (click)="closeModal()" class="btn btn-outline-dark mx-2">CLose</button>
+    <button type="submit" (click)="handleSubmit()" class="btn btn-dark ms-3"
+      [disabled]="!callTodayForm.valid || !starValid" data-bs-toggle="tooltip" data-bs-placement="top"
+      title="Submit after complete the form">Submit</button>
+  </div>
+
+</form>

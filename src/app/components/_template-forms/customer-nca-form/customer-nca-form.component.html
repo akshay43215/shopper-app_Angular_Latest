@@ -1,0 +1,113 @@
+<form class="px-5 py-3" [formGroup]="callNCAForm">
+
+  <!-- Call Response -->
+  <div class="mb-3 ">
+    <label for="callRespId" class="form-label">Call Response :</label>
+    <select name="" id="callRespId" formControlName="callRespFC" class="form-control form-input">
+      <option [ngValue]="null" disabled>Choose the Call Response..</option>
+      <option *ngFor="let itm of callResponseList" [value]="itm.resid">
+        {{itm.resname}}
+      </option>
+    </select>
+    <p id="callRespAlert" *ngIf="callNCAForm.dirty && f['callRespFC'].errors" class="form-text text-danger">** call response is mandatory..</p>
+  </div>
+
+  <!-- call answered 🟨  -->
+  <div class=" row mb-3 d-flex align-items-center" *ngIf="showAnswerDrops">
+    <div class="col">
+      <label for="custSatisId" class="form-label">Overall Satisfaction with Service :</label>
+      <select name="" id="custSatisId" formControlName="leadStaisFC" class="form-control form-input ">
+        <option [ngValue]="null" disabled>Choose Satisfaction level..</option>
+        <option value="N/A">N/A</option>
+        <option value="Not_Satisfied">Not Satisfied</option>
+        <option value="Moderately_Satisfied">Moderately Satisfied</option>
+        <option value="Satisfied">Satisfied</option>
+        <option value="Beyond_Expectation">Beyond Expectation</option>
+      </select>
+      <p id="callRespAlert" *ngIf="callNCAForm.dirty && f['leadStaisFC'].errors" class="form-text text-danger">** Satisfaction level is mandatory..</p>
+    </div>
+    <div class="col">
+      <label for="TranTimeId" class="form-label">Transaction Wait Time :</label>
+      <select name="" id="tranTimeId" formControlName="TranTimeFC" class="form-control form-input">
+        <option [ngValue]="null" disabled>Choose Wait Time..</option>
+        <option [ngValue]="0">N/A</option>
+        <option [ngValue]="1">0 to 30 Minutes</option>
+        <option [ngValue]="2">30 Minutes to 1 Hr</option>
+        <option [ngValue]="3">1 Hr to 2 Hr</option>
+        <option [ngValue]="4">2 Hr to 3 Hr</option>
+        <option [ngValue]="4"> 3 Hr to 4 Hr</option>
+        <option [ngValue]="4"> 4 Hr and Above </option>
+      </select>
+      <p id="tranTimeAlert" *ngIf="callNCAForm.dirty && f['TranTimeFC'].errors" class="form-text text-danger">** Wait Time is mandatory..</p>
+    </div>
+    <div class="col">
+       <!-- followUp status  🕒-->
+      <label for="NpsDropId" class="form-label">How likely customers are to recommend Manappuram products and
+        services to friends and family net Promoter Score (NPS) :</label>
+        <select name="" id="NpsDropId" formControlName="NpScoreFC" class="form-control form-input ">
+          <option value="null" disabled>Choose NPS score ...</option>
+          <option value="10" >10</option>
+          <option value="9" >09</option>
+          <option value="8" >08</option>
+          <option value="7" >07</option>
+          <option value="6" >06</option>
+          <option value="5" >05</option>
+          <option value="4" >04</option>
+          <option value="3" >03</option>
+          <option value="2" >02</option>
+          <option value="1" >01</option>
+        </select>
+        <p id="NpsDropAlert" *ngIf="callNCAForm.dirty && f['NpScoreFC'].errors" class="form-text text-danger">**NPS score is mandatory..</p>
+    </div>
+
+    <!-- Remarks & check -->
+    <div class="mb-3">
+      <div class="col" *ngIf="showNPSRemark">
+        <label for="ncaRemarkId" class="form-label">Remarks Feedback [*for NPS Below 7] :</label>
+        <input id="ncaRemarkId" class="form-control form-input" type="text" autocomplete="off" formControlName="ncaRemarkFC" placeholder="Enter your remarks ..!">
+        <p id="ncaRemarkIdAlert" *ngIf="callNCAForm.dirty && f['ncaRemarkFC'].errors" class="form-text text-danger">**NPS score is mandatory for Below 7 scores..</p>
+      </div>
+      <div class="col">
+        <label for="leadRemark" class="form-label">Feedback for further improvement :</label>
+        <input id="leadRemarkId" class="form-control form-input" type="text" autocomplete="off" formControlName="leadRemarkFC" placeholder="Enter your remarks ..!">
+      </div>
+      <!-- Checkboxes -->
+      <div class="col ">
+        <input type="checkbox" id="clearCheckId" formControlName="clearCheckFC" checked="f['clearCheck'].value" class="form-check-input">
+        <label class="form-check-label" for="clearCheck">Have I been clear to you? , Assist you with anything further?</label>
+        <p id="checkboxAlert"  *ngIf="callNCAForm.dirty && f['clearCheckFC'].errors" class="form-text text-danger">**Accept the terms and conditions ..</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 d-flex align-items-center" *ngIf="showAnswerDrops">
+      <label class="form-rating" for="rating">Star rating</label>
+      <!-- STAR RATING -->
+      <section id="rate" class="rating"  (change)="handleCheckStar($event)">
+        <!-- <option [ngValue]="f['starRatingFC'].value"></option> -->
+        <!-- FIFTH STAR -->
+        <input type="radio" id="star_5" name="rate" value="5" />
+        <label for="star_5" title="Five">&#9733;</label>
+        <!-- FOURTH STAR -->
+        <input type="radio" id="star_4" name="rate" value="4" />
+        <label for="star_4" title="Four">&#9733;</label>
+        <!-- THIRD STAR -->
+        <input type="radio" id="star_3" name="rate" value="3" />
+        <label for="star_3" title="Three">&#9733;</label>
+        <!-- SECOND STAR -->
+        <input type="radio" id="star_2" name="rate" value="2" />
+        <label for="star_2" title="Two">&#9733;</label>
+        <!-- FIRST STAR -->
+        <input type="radio" id="star_1" name="rate" value="1" />
+        <label for="star_1" title="One">&#9733;</label>
+      </section>
+      <p id="startRatingAlert"  *ngIf="callNCAForm.dirty && !starValid" class="form-text text-danger px-2">**Star rating is mandatory</p>
+  </div>
+
+  <!-- Button pt -->
+  <div class="d-flex justify-content-end">
+    <button (click)="closeModal()" class="btn btn-outline-dark mx-2">CLose</button>
+    <button type="submit" (click)="handleSubmit()" class="btn btn-dark ms-3" [disabled]="!callNCAForm.valid || !starValid" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit after complete the form">Submit</button>
+  </div>
+
+</form>
